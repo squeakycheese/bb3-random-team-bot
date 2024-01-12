@@ -1,0 +1,25 @@
+name: deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: deploy new code
+      uses: JimCronqvist/action-ssh@master
+      env:
+        TOKEN: ${{secrets.DISCORD_BOT_TOKEN}}
+      with: 
+        hosts: ${{secrets.SSH_HOST}}
+        privateKey: ${{secrets.SSH_PRIVATE_KEY}}
+        debug: false
+        command: |
+          cd bb3-random-team-bot/
+          git checkout main
+          git pull
+          npm install
+          pm2 stop discordBot.js
+          pm2 start main.js --name discordBot.js

@@ -5,5 +5,4 @@ To run the bot:
 `node main.js TOKEN=<token>`
 
 To-do list:
-- Setup hosting on AWS EC2 instance
-- Set up GitHub to autmatically update EC2 instance when new code is pushed
+- Add teams as they are release by Cyanide
