@@ -25,7 +25,7 @@ Client.on('messageCreate', message => {
 
     if(message.author.bot) { return };
 
-    if (message.author.id == 189799852241190912 && InputText == '/ping') {
+    if (message.author.id == 189799852241190912 && userInputText == '/ping') {
         message.reply(`pong!`);
     }
 
