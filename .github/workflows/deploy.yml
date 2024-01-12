@@ -5,8 +5,15 @@ on:
     branches: [ main ]
 
 jobs:
-  hello:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Run a one-line script
-      run: echo Hello, world!
+    - name: deploy new code
+      uses: JimCronqvist/action-ssh@master
+      with: 
+        hosts: ${{secrets.SSH_HOST}}
+        privateKey: ${{secrets.SSH_PRIVATE_KEY}}
+        debug: false
+        command:
+          ls -lah && /
+          echo "Hello World!"
